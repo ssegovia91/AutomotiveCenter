@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutomotiveCenter.Application.Models
+namespace AutomotiveCenter.Application.Entities
 {
     public class Role: EntityBase
     {

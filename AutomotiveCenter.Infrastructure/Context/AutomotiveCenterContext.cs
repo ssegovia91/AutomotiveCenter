@@ -1,4 +1,4 @@
-﻿using AutomotiveCenter.Application.Models;
+﻿using AutomotiveCenter.Application.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -14,15 +14,10 @@ namespace AutomotiveCenter.Infrastructure.Context
     public class AutomotiveCenterContext : DbContext
     {
         #region Constants
-        const string USER_ADDED = "UserNameCreated";
-        const string USER_UPDATED = "UserNameUpdated";
-        const string USER_DELETED = "UserNameDeleted";
         const string DATE_ADDED = "DateCreated";
         const string DATE_UPDATED = "DateUpdated";
         const string FLAG_DELETED = "IsDeleted";
         #endregion
-
-        public string UserName { get; set; }
 
         public AutomotiveCenterContext() : base() { }
         public AutomotiveCenterContext(DbContextOptions<AutomotiveCenterContext> options) : base(options){ }
@@ -112,18 +107,15 @@ namespace AutomotiveCenter.Infrastructure.Context
             {
                 switch (entry.State)
                 {
-                    case EntityState.Added:
-                        entry.CurrentValues[USER_ADDED] = UserName;
+                    case EntityState.Added:                        
                         entry.CurrentValues[DATE_ADDED] = DateTime.Now;
                         break;
-                    case EntityState.Modified:
-                        entry.CurrentValues[USER_UPDATED] = UserName;
+                    case EntityState.Modified:                        
                         entry.CurrentValues[DATE_UPDATED] = DateTime.Now;
                         break;
                     case EntityState.Deleted:
                         entry.State = EntityState.Modified;
-                        entry.CurrentValues[FLAG_DELETED] = true;
-                        entry.CurrentValues[USER_DELETED] = UserName;
+                        entry.CurrentValues[FLAG_DELETED] = true;                        
                         break;
                 }
             }

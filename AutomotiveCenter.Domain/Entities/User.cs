@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace AutomotiveCenter.Application.Models
+namespace AutomotiveCenter.Application.Entities
 {
     public class User: EntityBase
     {
